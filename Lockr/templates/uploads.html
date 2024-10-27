@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head><base href="">
+            <meta charset="utf-8">
+            <title>File manager</title>
+            <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/fonts/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/fonts/icomoon/icomoon.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/fonts/flags/flag-icon.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/pagination/pagination.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/izitoast/izitoast.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/webui-popover/webui-popover.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/datetimepicker/timepicker-addon.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/emojionearea/emojionearea.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/tagsinput/bootstrap-tagsinput.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/owlcarousel/owl.carousel.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/owlcarousel/owl.theme.default.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/fancybox/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/minicolors/jquery.minicolors.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/select2/css/select2.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/monthly/monthly.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/css/animate.min.css" rel="stylesheet" type="text/css">
+            <link href="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/css/style.css" rel="stylesheet" type="text/css">
+            <script src="https://app.whatsupleads.com/inc/themes/backend/Stackmin/Assets/plugins/jquery/jquery.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="https://app.whatsupleads.com/inc/core/Account_manager/Assets/css/account_manager.css">
+    <link rel="stylesheet" type="text/css" href="https://app.whatsupleads.com/inc/core/Caption/Assets/css/caption.css">
+    <link rel="stylesheet" type="text/css" href="https://app.whatsupleads.com/inc/core/Caption/Assets/plugins/emojionearea/emojionearea.min.css">
+    <link rel="stylesheet" type="text/css" href="https://app.whatsupleads.com/inc/core/File_manager/Assets/css/file_manager.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet" type="text/css"><script style="display: none;">var tvt = tvt || {}; tvt.captureVariables = function(a){for(var b=
+    new Date,c={},d=Object.keys(a||{}),e,f={},g=0;e=d[g];f={Ka:f.Ka},g++)if(a.hasOwnProperty(e)&&"undefined"!=typeof a[e])try{f.Ka=[],c[e]=JSON.stringify(a[e],function(h){return function(k,l){try{if("function"!==typeof l){if("object"===typeof l&&null!==l){if(l instanceof HTMLElement||l instanceof Node||-1!=h.Ka.indexOf(l))return;h.Ka.push(l)}return l}}catch(t){}}}(f))}catch(h){}a=document.createEvent("CustomEvent");a.initCustomEvent("TvtRetrievedVariablesEvent",!0,!0,{variables:c,date:b});window.dispatchEvent(a)};window.setTimeout(function() {tvt.captureVariables({'dataLayer.hide': (function(a){a=a.split(".");for(var b=window,c=0;c<a.length&&(b=b[a[c]],b);c++);return b})('dataLayer.hide'),'gaData': window['gaData'],'dataLayer': window['dataLayer']})}, 2000);
+    </script>
+</head>
+  <body>
+    <div class="d-flex h-100">
+
+<!--end::Sidebar-->
+    <div class="main-wrapper flex-grow-1 n-scroll d-flex file-manager" data-loading="false">
+        <form class="fm-content fm-form flex-grow-1">
+	<div class="fm-progress-bar bg-primary" style="width: 0%; display: none;"></div>
+	<div class="fm-list row px-2 py-4 ajax-load-scroll m-l-0 m-r-0 n-scroll align-content-start" data-url="https://app.whatsupleads.com/file_manager/load_files" data-scroll="ajax-load-scroll" data-call-after="File_manager.lazy();" data-page="1" data-loading="0">
+
+    {% for file, file_name in zip(files, file_names) %}
+    <div class="col-2">
+        <div class="fm-list-item rounded mb-4 bg-white" href="javascript:void(0);" data-id="{{ file_name }}" data-file="{{ file }}">
+            <img class="fm-list-overplay" src="https://app.whatsupleads.com/inc/core/File_manager/Assets/img/overplay.png">
+            <div class="fm-list-box">
+                <div class="fm-chechbox form-check form-check-inline">
+                    <input class="form-check-input fm-check-item" type="checkbox" name="ids[]" id="{{ file_name }}" value="{{ file_name }}">
+                    <label class="form-check-label" for="{{ file_name }}"></label>
+                </div>
+                <div class="fm-list-hover">
+                    <div class="fm-list-media rounded-top d-flex flex-column align-items-center justify-content-center fs-90 text-primary" style="background-image: url('{{ file }}');">
+                    </div>
+                    <div class="fm-list-action text-end fs-16">
+                        <a href="javascript:void(0);" class="fm-edit p-l-5" data-fancybox="" data-src="{{ file }}" data-options="{&quot;type&quot; : &quot;iframe&quot;, &quot;iframe&quot; : {&quot;preload&quot; : false, &quot;css&quot; : {&quot;height&quot; : &quot;100%&quot;}}}">
+                            <i class="fad fa-pencil-alt"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="p-l-5 btnOpenMediaInfo" data-id="{{ file_name }}"><i class="fad fa-info-circle"></i></a>
+                    </div>
+                </div>
+                <div class="fm-list-info border-top">
+                    <div class="text-truncate fw-5 text-dark" title="{{ file_name }}">{{ file_name }}</div>
+                    <div class="text-muted fs-11">
+                        {{ (os.path.getsize('static/uploads/' ~ user_id ~ '/' ~ file_name) / 1024) | round(2) }} KB
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+	</div>
+	<div class="ajax-loading text-center bg-primary" style="display: none;"></div>
+</form>        <div class="submenu-right fm-submenu d-flex flex-column flex-row-auto p-20 bg-white n-scroll">
+    <div class="fm-options">
+
+
+        <div class="mb-4">
+            <h3 class="mb-3 text-gray-800 fs-16"><i class="fad fa-filter"></i> Filter</h3>
+
+            <div class="input-group mb-2">
+                <span class="input-group-text bg-white px-3">
+                    <i class="fad fa-search"></i>
+                </span>
+                <input type="text" class="form-control ajax-filter fm-input-search fs-12 fw-4" name="keyword" placeholder="Enter keyword">
+            </div>
+
+            <div class="input-group mb-2 d-none">
+                <input type="text" class="form-control ajax-filter fs-12 fw-4 fm-input-folder" name="folder">
+            </div>
+
+            <div class="form-group">
+                <label class="fs-12">Media Type</label>
+
+                <div class="input-group">
+                    <span class="input-group-text bg-white px-3">
+                        <i class="fad fa-filter"></i>
+                    </span>
+                    <select class="form-control fs-12 fw-4 ajax-filter fm-input-filter" name="filter">
+                        <option value="">All Media</option>
+                        <option value="image">Image</option>
+                        <option value="video">Video</option>
+                        <option value="pdf">Pdf</option>
+                        <option value="doc">Document</option>
+                        <option value="mp3">Audio</option>
+                        <option value="zip">Zip</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fm-storage mb-3">
+        <h3 class="mb-3 text-gray-800 fs-16"><i class="fad fa-info-circle text-warning"></i> Media info</h3>
+        <div class="d-flex justify-content-between mb-2">
+            <div>
+                <div class="fw-6 fs-18 text-primary">0 bytes</div>
+                <div class="fs-12 text-gray-800">Used</div>
+            </div>
+            <div class="text-end text-gray-800">
+                <div class="fw-6 fs-18 total">1000MB</div>
+                <div class="fs-12">Total</div>
+            </div>
+        </div>
+        <div class="progress h-5">
+            <div class="progress-bar bg-primary" style="width:0%"></div>
+            <div class="progress-bar bg-success" style="width:0%"></div>
+            <div class="progress-bar bg-warning" style="width:0%"></div>
+            <div class="progress-bar bg-danger" style="width:0%"></div>
+            <div class="progress-bar bg-dark" style="width:0%"></div>
+        </div>
+    </div>
+    <div class="fm-stats">
+        <div class="d-flex align-items-center mb-3">
+            <div>
+                <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label bg-light-primary fs-20 text-primary">
+                        <i class="fad fa-image-polaroid"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-fill text-gray-700">
+                <div class="fw-6 fs-12">Images</div>
+                <div class="fs-10 text-muted">0 files </div>
+            </div>
+            <div class="flex-fill text-end fw-6 text-primary fs-12 text-gray-700">0 bytes</div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <div>
+                <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label bg-light-success fs-20 text-success">
+                        <i class="fad fa-video"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-fill text-gray-700">
+                <div class="fw-6 fs-12">Videos</div>
+                <div class="fs-10 text-muted">0 files</div>
+            </div>
+            <div class="flex-fill text-end fw-6 text-primary fs-12 text-gray-700">0 bytes</div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <div>
+                <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label bg-light-primary fs-20 text-primary">
+                        <i class="fad fa-file-music"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-fill text-gray-700">
+                <div class="fw-6 fs-12">Audios</div>
+                <div class="fs-10 text-muted">0 files</div>
+            </div>
+            <div class="flex-fill text-end fw-6 text-primary fs-12 text-gray-700">0 bytes</div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <div>
+                <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label bg-light-info fs-20 text-info">
+                        <i class="fad fa-file-csv"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-fill text-gray-700">
+                <div class="fw-6 fs-12">CSV</div>
+                <div class="fs-10 text-muted">0 files</div>
+            </div>
+            <div class="flex-fill text-end fw-6 text-info fs-12 text-gray-700">0 bytes</div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <div>
+                <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label bg-light-danger fs-20 text-danger">
+                        <i class="fad fa-file-pdf"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-fill text-gray-700">
+                <div class="fw-6 fs-12">PDF</div>
+                <div class="fs-10 text-muted">0 files</div>
+            </div>
+            <div class="flex-fill text-end fw-6 text-danger fs-12 text-gray-700">0 bytes</div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <div>
+                <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label bg-light-warning fs-20 text-warning">
+                        <i class="fad fa-file-alt"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-fill text-gray-700">
+                <div class="fw-6 fs-12">Documents</div>
+                <div class="fs-10 text-muted">0 files</div>
+            </div>
+            <div class="flex-fill text-end fw-6 text-warning fs-12 text-gray-700">0 bytes</div>
+        </div>
+
+        <div class="d-flex align-items-center mb-3">
+            <div>
+                <div class="symbol symbol-45px me-2">
+                    <span class="symbol-label fs-20">
+                        <i class="fad fa-image-polaroid"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-fill text-gray-700">
+                <div class="fw-6 fs-12">Others</div>
+                <div class="fs-10 text-muted">0 files</div>
+            </div>
+            <div class="flex-fill text-end fw-6 text-dark fs-12 text-gray-700">0 bytes</div>
+        </div>
+    </div>
+</div>    </div>
+
+            </div>
+  </body>
+</html>

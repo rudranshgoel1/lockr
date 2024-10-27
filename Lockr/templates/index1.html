@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css">
+    <script>
+    function toggleUploadType() {
+        const bulkUploadDiv = document.getElementById('bulk-upload');
+        const manualUploadDiv = document.getElementById('manual-upload');
+        const toggleButton = document.getElementById('toggle-button');
+
+        if (bulkUploadDiv.style.display === 'none') {
+            bulkUploadDiv.style.display = 'block';
+            manualUploadDiv.style.display = 'none';
+            toggleButton.textContent = 'Switch to Manual Upload';
+        } else {
+            bulkUploadDiv.style.display = 'none';
+            manualUploadDiv.style.display = 'block';
+            toggleButton.textContent = 'Switch to Bulk Upload';
+        }
+    }
+</script>
+    <script>
+    tailwind.config = {
+darkMode: 'class',
+theme: {
+  extend: {
+    colors: {
+      primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+    }
+  },
+  fontFamily: {
+    'body': [
+  'Inter',
+  'ui-sans-serif',
+  'system-ui',
+  '-apple-system',
+  'system-ui',
+  'Segoe UI',
+  'Roboto',
+  'Helvetica Neue',
+  'Arial',
+  'Noto Sans',
+  'sans-serif',
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol',
+  'Noto Color Emoji'
+],
+    'sans': [
+  'Inter',
+  'ui-sans-serif',
+  'system-ui',
+  '-apple-system',
+  'system-ui',
+  'Segoe UI',
+  'Roboto',
+  'Helvetica Neue',
+  'Arial',
+  'Noto Sans',
+  'sans-serif',
+  'Apple Color Emoji',
+  'Segoe UI Emoji',
+  'Segoe UI Symbol',
+  'Noto Color Emoji'
+]
+  }
+}
+}
+    </script>
+    <style>
+    .sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+</style>
+  </head>
+  <body>
+
+    <div class="flex">
+      <div class="flex-1">
+        <header class="bg-gray-50">
+  <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="text-center sm:text-left">
+        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">Welcome Back, {{user_name}}!</h1>
+      </div>
+
+      <div class="relative inline-block text-left">
+<div>
+<button onclick="toggleDropdown()" type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" id="menu-button" aria-expanded="true" aria-haspopup="true">
+  Options
+  <i class="fas fa-caret-down ml-2"></i>
+</button>
+</div>
+<div id="dropdown" class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+<div class="py-1" role="none">
+  <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
+      <i class="fas fa-user mr-3"></i>
+      Account
+  </a>
+  <a href="#" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
+      <i class="fas fa-key mr-3"></i>
+      Change password
+  </a>
+  <a href="/uploads" class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">
+      <i class="fas fa-credit-card mr-3"></i>
+      All Uploads
+  </a>
+  <div class="border-t border-gray-100"></div>
+  <a href="/logout" class="flex items-center px-4 py-2 text-sm text-red-700 hover:bg-red-100" role="menuitem" tabindex="-1">
+      <i class="fas fa-sign-out-alt mr-3"></i>
+      Logout
+  </a>
+</div>
+</div>
+</div>
+
+<script>
+function toggleDropdown() {
+document.getElementById('dropdown').classList.toggle('hidden');
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+if (!event.target.matches('#menu-button')) {
+  var dropdowns = document.getElementsByClassName("origin-top-right");
+  for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (!openDropdown.classList.contains('hidden')) {
+          openDropdown.classList.add('hidden');
+      }
+  }
+}
+}
+</script>
+    </div>
+  </div>
+</header>
+        <section class="bg-white dark:bg-gray-900">
+          <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            <div class="flex items-center justify-center w-full mt-4"></div>
+            <div id="bulk-upload">
+              <form action="" method="POST" enctype="multipart/form-data">
+                <div class="flex items-center justify-center w-full">
+                  <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                      <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                      </svg>
+                      <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                      <p class="text-xs text-gray-500 dark:text-gray-400">All File Types Allowed!</p>
+                    </div>
+                    <input id="dropzone-file" type="file" name="file" hidden="" multiple/>
+                  </label>
+                </div><br><br>
+                <p id="file-names" class="text-center text-sm text-gray-500 dark:text-gray-400"></p>
+                <center>
+                  <button type="submit" class="py-3 px-5 text-sm font-medium text-center text-white rounded-lg bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Upload!</button>
+                </center>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script>
+    document.getElementById('dropzone-file').addEventListener('change', function(event) {
+      const files = event.target.files;
+      let fileNames = '';
+      for (let i = 0; i < files.length; i++) {
+        fileNames += files[i].name + (i < files.length - 1 ? ', ' : '');
+      }
+      document.getElementById('file-names').textContent = `Selected files: ${fileNames}`;
+    });
+    </script>
+
+
+
+</body>
+</html>
