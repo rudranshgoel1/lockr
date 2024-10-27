@@ -10,7 +10,7 @@ app = Flask(__name__, template_folder="templates")
 UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///newdb1.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///instance/newdb1.sqlite"
 app.config["SECRET_KEY"] = "super_secret_key"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
