@@ -109,6 +109,3 @@ def login():
         else:
             error = "Wrong Password. <a href='/forgot'>Forgot Password?</a>"
     return render_template("login.html", error=error)
-
-if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port=5000)
